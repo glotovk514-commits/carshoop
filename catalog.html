@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoParts - Каталог автозапчастей</title>
+    <link rel="stylesheet" href="catalog.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"> <h1>AutoParts</h1></a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="o_nas.html">О нас</a></li>
+                    <li><a href="support.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <button class="cart-btn" id="cartBtn">
+                Корзина (<span id="cartCount">0</span>)
+            </button>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main">
+        <!-- Герой секция -->
+
+
+        <!-- Каталог -->
+        <section class="catalog" id="catalog">
+            <div class="container">
+                <h2>Каталог товаров</h2>
+
+                <!-- Фильтры -->
+                <div class="filters">
+                    <select id="categoryFilter">
+                        <option value="all">Все категории</option>
+                        <option value="engine">Двигатель</option>
+                        <option value="brakes">Тормозная система</option>
+                        <option value="suspension">Подвеска</option>
+                        <option value="electrical">Электрика</option>
+                        <option value="transmission">Трансмиссия</option>
+                        <option value="cooling">Система охлаждения</option>
+                        <option value="filters">Фильтры</option>
+                    </select>
+                    <input type="text" id="searchInput" placeholder="Поиск товаров...">
+                </div>
+
+                <!-- Сетка товаров -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Товары будут загружены через JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- О нас -->
+
+
+
+    </main>
+
+    <!-- Модальное окно корзины -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Корзина</h3>
+                <button class="close-btn" id="closeCart">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Товары в корзине будут загружены через JavaScript -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    Итого: <span id="cartTotal">0</span> руб.
+                </div>
+                <button class="checkout-btn" id="checkoutBtn">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно оформления заказа -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h3>Оформление заказа</h3>
+                <button class="close-btn" id="closeCheckout">&times;</button>
+            </div>
+            <form class="checkout-form" id="checkoutForm">
+                <div class="form-section">
+                    <h4>Контактная информация</h4>
+                    <div class="form-row">
+                        <input type="text" id="firstName" placeholder="Имя" required>
+                        <input type="text" id="lastName" placeholder="Фамилия" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="tel" id="phone" placeholder="Телефон" required>
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h4>Адрес доставки</h4>
+                    <input type="text" id="city" placeholder="Город" required>
+                    <input type="text" id="address" placeholder="Адрес" required>
+                    <div class="form-row">
+                        <input type="text" id="postalCode" placeholder="Индекс">
+                        <input type="text" id="apartment" placeholder="Квартира/Офис">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h4>Способ доставки</h4>
+                    <div class="delivery-options">
+                        <label class="delivery-option">
+                            <input type="radio" name="delivery" value="courier" checked>
+                            <span>Курьерская доставка - 300 руб.</span>
+                        </label>
+                        <label class="delivery-option">
+                            <input type="radio" name="delivery" value="pickup">
+                            <span>Самовывоз - бесплатно</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h4>Способ оплаты</h4>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card" checked>
+                            <span>Банковской картой</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="cash">
+                            <span>Наличными при получении</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h4>Комментарий к заказу</h4>
+                    <textarea id="comment" placeholder="Дополнительные пожелания..."></textarea>
+                </div>
+
+                <div class="order-summary">
+                    <h4>Итог заказа</h4>
+                    <div class="summary-row">
+                        <span>Товары:</span>
+                        <span id="summaryItems">0 руб.</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Доставка:</span>
+                        <span id="summaryDelivery">0 руб.</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Итого:</span>
+                        <span id="summaryTotal">0 руб.</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="back-btn" id="backToCart">Назад к корзине</button>
+                    <button type="submit" class="confirm-btn">Подтвердить заказ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно подтверждения заказа -->
+    <div class="confirmation-modal" id="confirmationModal">
+        <div class="confirmation-content">
+            <div class="confirmation-icon">✓</div>
+            <h3>Заказ успешно оформлен!</h3>
+            <p>Номер вашего заказа: <strong id="orderNumber">000001</strong></p>
+            <p>В ближайшее время с вами свяжется наш менеджер для подтверждения заказа.</p>
+            <div class="confirmation-actions">
+                <button class="continue-shopping" id="continueShopping">Продолжить покупки</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AutoParts. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="catalog.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - AutoParts</title>
+    <link rel="stylesheet" href="support.css">
+    <!-- Подключаем Яндекс Карты -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=967276f9-968e-46ab-bcd8-e7a7ed3aad67&lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>AutoParts</h1>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="index.html#catalog">Каталог</a></li>
+                    <li><a href="o_nas.html">О нас</a></li>
+                    <li><a href="support.html">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="cart-section">
+                <button class="cart-btn" id="cartBtn">
+                    Корзина (<span id="cartCount">0</span>)
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main">
+        <!-- Хлебные крошки -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <nav class="breadcrumb-nav">
+                    <a href="index.html">Главная</a>
+                    <span>/</span>
+                    <span>Контакты</span>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section class="contacts-page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Контакты</h1>
+                    <p class="page-subtitle">Свяжитесь с нами удобным для вас способом</p>
+                </div>
+
+                <div class="contacts-main">
+                    <div class="contact-info-detailed">
+                        <div class="contact-card">
+                            <h3>📞 Телефоны</h3>
+                            <p>+7 (495) 123-45-67 - Основной</p>
+                            <p>+7 (800) 123-45-67 - Бесплатный по России</p>
+                            <p>+7 (495) 123-45-68 - Техническая поддержка</p>
+                        </div>
+
+                        <div class="contact-card">
+                            <h3>✉️ Электронная почта</h3>
+                            <p>info@autoparts.ru - Общие вопросы</p>
+                            <p>sales@autoparts.ru - Отдел продаж</p>
+                            <p>support@autoparts.ru - Техподдержка</p>
+                        </div>
+
+                        <div class="contact-card">
+                            <h3>📍 Адреса</h3>
+                            <p><strong>Главный офис:</strong> Азов, ул. Промышленная, д. 1</p>
+                            <p><strong>Склад:</strong> Азов, ул. Промышленная, д. 1</p>
+                            <p><strong>Магазин:</strong> Азов, ул. Промышленная, д. 1</p>
+                        </div>
+
+                        <div class="contact-card">
+                            <h3>🕒 Режим работы</h3>
+                            <p><strong>Офис:</strong> Пн-Пт: 9:00-18:00</p>
+                            <p><strong>Магазин:</strong> Ежедневно: 9:00-21:00</p>
+                            <p><strong>Техподдержка:</strong> Круглосуточно</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-map-form">
+                        <div class="map-section">
+                            <h3>Мы на карте</h3>
+                            <div class="map-container">
+                                <div id="map" style="width: 100%; height: 400px;"></div>
+                                <div class="map-addresses">
+                                    <button class="address-btn active" data-address="Москва, ул. Автозаводская, д. 15" data-coords="55.707105, 37.656869">
+                                        Главный офис
+                                    </button>
+                                    <button class="address-btn" data-address="Московская обл., г. Люберцы, ул. Складская, д. 8" data-coords="55.678741, 37.893521">
+                                        Склад
+                                    </button>
+                                    <button class="address-btn" data-address="Москва, ул. Ленинградское ш., д. 65" data-coords="55.839041, 37.438789">
+                                        Магазин
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-form-section">
+                            <h3>Обратная связь</h3>
+                            <form class="contact-form" id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">Ваше имя *</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Ваш email *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Телефон</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="subject">Тема сообщения</label>
+                                    <select id="subject" name="subject">
+                                        <option value="">Выберите тему</option>
+                                        <option value="general">Общий вопрос</option>
+                                        <option value="sales">Вопрос по продажам</option>
+                                        <option value="support">Техническая поддержка</option>
+                                        <option value="complaint">Жалоба</option>
+                                        <option value="suggestion">Предложение</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message">Сообщение *</label>
+                                    <textarea id="message" name="message" rows="5" required></textarea>
+                                </div>
+
+                                <button type="submit" class="submit-btn">Отправить сообщение</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <h2>Часто задаваемые вопросы</h2>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h3>Как сделать заказ?</h3>
+                            <p>Вы можете сделать заказ через сайт, по телефону или посетив наш магазин. Онлайн-заказы обрабатываются круглосуточно.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Какие способы доставки доступны?</h3>
+                            <p>Мы предлагаем курьерскую доставку, самовывоз из магазина и доставку транспортными компаниями по всей России.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Есть ли гарантия на товары?</h3>
+                            <p>Да, на все товары предоставляется гарантия от 6 месяцев до 2 лет в зависимости от категории товара.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h3>Можно ли вернуть товар?</h3>
+                            <p>Да, в течение 14 дней с момента покупки вы можете вернуть товар надлежащего качества при сохранении упаковки и документов.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AutoParts. Все права защищены.</p>
+        </div>
+    </footer>
